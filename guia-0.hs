@@ -1,4 +1,3 @@
-import Data.Semigroup (diff)
 -- 2)a)
 valorAbsoluto :: (Num a, Ord a) => a -> a
 valorAbsoluto x | x < 0 = -x
@@ -89,7 +88,6 @@ listaInt1 :: [Int] = [1,1,2,3,5]
 listaEntIguales :: [Int] = [1,1,1]
 
 -- 5)
-arbolBool1 :: AB Bool
 arbolBool1 :: AB Bool = Bin (Bin Nil True Nil) False (Bin Nil False Nil)
 arbolInt1 :: AB Int = Bin (Bin Nil 1 Nil) 2 (Bin Nil 3 Nil)
 arbolInt2 :: AB Int = Bin (Bin Nil 10 Nil) 3 Nil
