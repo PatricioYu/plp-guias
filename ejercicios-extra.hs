@@ -19,12 +19,7 @@ mergeSort xs =
 -- decimos que es izquierda dominante si:
 -- * la suma de sus elementos de la mitad izquierda supera los de la derecha
 -- * cada una de las mitades izquierdas es a su vez izquierda dominante
-izquierdaDominante :: (Ord a, Num a) => [a] -> Bool
-izquierdaDominante [] = True
-izquierdaDominante [x] = True
-izquierdaDominante xs = 
-    let (izq, der) = splitAt (length xs `div` 2) xs
-    in (sum izq > sum der) && izquierdaDominante izq
+-- TO-DO
 
 -- ejercicio 3) D&C
 -- Dado un arreglo de n enteros distintos (positivos y negativos) en orden estrictamente creciente. Queremos determinar si existe una posicion i tal que a_i = i.
