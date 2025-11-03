@@ -8,12 +8,16 @@ padre(luis, ramiro).
 
 abuelo(X,Y) :- padre(X,Z), padre(Z,Y).
 
-% i. ¿Cuál el resultado de la consulta abuelo(X, manuel)?
+/*
+* i. ¿Cuál el resultado de la consulta abuelo(X, manuel)?
+*/
 % X = juan ;
 % false.
 
-% ii. A partir del predicado binario padre, definir en Prolog los predicados binarios:
-% hijo, hermano y descendiente.
+/*
+* ii. A partir del predicado binario padre, definir en Prolog los predicados binarios:
+* hijo, hermano y descendiente.
+*/
 
 % X es hijo de Y
 hijo(X, Y) :- padre(Y, X).
@@ -25,7 +29,9 @@ hermano(X, Y) :- padre(Z, X), padre(Z, Y), X \= Y.
 descendiente(X, Y) :- padre(Y, X).
 descendiente(X, Y) :- abuelo(Y, X).
 
-% iv. ¿Qué consulta habría que hacer para encontrar a los nietos de juan?
+/* 
+*iv. ¿Qué consulta habría que hacer para encontrar a los nietos de juan?
+*/
 % ?- abuelo(juan, Y).
 % Y = daniel ;
 % Y = diego ;
@@ -33,13 +39,17 @@ descendiente(X, Y) :- abuelo(Y, X).
 % Y = manuel ;
 % Y = ramiro.
 
-% v. ¿Cómo se puede definir una consulta para conocer a todos los hermanos de pablo?
+/*
+* v. ¿Cómo se puede definir una consulta para conocer a todos los hermanos de pablo?
+*/
 % ?- hermano(pablo, Y).     ?- hermano(X, pablo)
 % Y = manuel ;              % X = manuel ;
 % Y = ramiro.               % X = ramiro.
 
-% vii. Explicar la respuesta a la consulta ancestro(juan, X). 
-% ¿Qué sucede si se pide más de un resultado?
+/* 
+* vii. Explicar la respuesta a la consulta ancestro(juan, X).
+* ¿Qué sucede si se pide más de un resultado?
+*/ 
 
 % ancestro(X, X).
 % ancestro(X, Y) :- ancestro(Z, Y), padre(X, Z).
