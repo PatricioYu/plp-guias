@@ -91,9 +91,19 @@ permutaciones :: [a] -> [[a]]
 permutaciones = foldr (\x rec -> concatMap (\xs -> map (f x xs) [0..length xs]) rec) [[]]
     where f x xs index = drop index xs ++ [x] ++ take index xs
 
--- [3,1,2]
--- 3 * 1 * (map f 2 [] [0..0]) --> 3 * 1 * (f 2 [] 0 = drop 0 [] ++ [2] ++ take 0 []) = [2]
--- 3 * (map f 1 [2] [0..1]) --> [drop 0 [2] ++ [1] ++ take 0 [2]] ++ [drop 1 [2] ++ [1] ++ take 1 [2]] = [[1,2]]
-
 -- >>> permutaciones [3,1,2]
 -- [[2,1,3],[1,3,2],[3,2,1],[1,2,3],[2,3,1],[3,1,2]]
+
+-- partes :: [a] -> [[a]]
+-- partes = foldr (\x rec -> concatMap ()) [[]]
+
+data Histograma = Histograma Float Float [ Int ] deriving ( Show , Eq )
+
+vacio :: Int -> (Float, Float) -> Histograma
+vacio n (i, t) = Histograma i ((t-i)/fromIntegral n) [0 | _ <- [0 .. n+1]]
+
+-- >>> vacio 2 (2,3)
+-- Histograma 2.0 0.5 [0,0,0,0]
+
+-- >>> vacio 1 (1,10)
+-- Histograma 1.0 9.0 [0,0,0]
