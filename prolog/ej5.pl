@@ -3,7 +3,8 @@ Definir los siguientes predicados sobre listas usando append:
 * i. last(?L, ?U), donde U es el último elemento de la lista L.
 */
 last([U|[]], U).
-last([_|T], U) :- last(T, U).
+% last([_|T], U) :- last(T, U).
+last(L, U) :- append(_, [U], L).
 
 /*
 * ii. reverse(+L, ?R), donde R contiene los mismos elementos que L, pero en orden inverso.
@@ -32,5 +33,6 @@ sublista(S, L) :- sufijo(Suf, L), prefijo(S, Suf), S \= [].
 * vi. pertenece(?X, +L), que es verdadero sii el elemento X se encuentra en la lista L. 
 * (Este predicado ya viene definido en Prolog y se llama member).
 */
-pertenece(X, [X|_]).
-pertenece(X, [_|T]) :- pertenece(X, T).
+% pertenece(X, [X|_]).
+% pertenece(X, [_|T]) :- pertenece(X, T).
+pertenece(X, Ls) :- sufijo(S, Ls), prefijo([X], S).
