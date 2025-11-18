@@ -17,3 +17,5 @@ aplanar([H|T], Ys) :-
 aplanar(X, [X]) :-
     X \= [],
     X \= [_|_].
+
+% corregir
