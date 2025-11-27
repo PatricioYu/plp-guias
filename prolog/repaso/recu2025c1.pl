@@ -23,3 +23,18 @@ paresQueSuman(A, B, N) :-
 desde(X, X).
 desde(X, Y) :- nonvar(Y), X < Y.
 desde(X, Y) :- var(Y), N is X + 1, desde(N, Y).
+
+listaDeN(0, []).
+listaDeN(N, L) :-
+    N > 0,
+    between(1, N, N2),
+    N3 is N - N2,
+    listaDeN(N3, L1),
+    append([N2], L1, L).
+
+capicua([]).
+capicua([_]).
+capicua(L) :-
+    append([X], Xs, L),
+    append(Ys, [X], Xs),
+    capicua(Ys).
